@@ -27,9 +27,9 @@ namespace Answer.Controllers
         public ActionResult<string> Get()
         {
             var rand = new Random();
-            var index = rand.Next(0, 9);
+            var index = rand.Next(0, 10);
             //// v2
-            //var index = rand.Next(0, 3);
+            //var index = rand.Next(0, 4);
             return Answers[index].ToString();
         }
     }

@@ -20,7 +20,7 @@ namespace Person.Controllers
         public ActionResult<string> Get()
         {
             var rand = new Random();
-            var index = rand.Next(0,2);
+            var index = rand.Next(0,3);
             return Person[index].ToString();
         }
     }
