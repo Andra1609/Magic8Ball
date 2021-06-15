@@ -13,10 +13,12 @@ namespace FrontEnd.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private IConfiguration Configuration;
 
-        public HomeController(IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
+            _logger = logger;
             Configuration = configuration;
         }
 

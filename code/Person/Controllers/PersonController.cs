@@ -17,7 +17,7 @@ namespace Person.Controllers
         };
          
         [HttpGet]
-        public ActionResult<string> Get()
+        public ActionResult<String> Get()
         {
             var rand = new Random();
             var index = rand.Next(0,3);

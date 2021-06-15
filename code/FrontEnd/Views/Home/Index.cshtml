@@ -4,5 +4,27 @@
 
 <div class="text-center">
     <h1 class="display-4">Magic 8 Ball</h1>
+
+    <div class="text-center" style="width:800px; margin:0 auto;">
+
+            <form>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label">Ask anything...</label>
+                    <input class="form-control" value="Will BTC go to 100k?"/>
+                </div>
+                <div class="form-group">
+                    <input type="image" src="~/assets/8-ball.png" value="Get Answer" onclick="window.location.reload()" class="ball_img"/>
+                </div>
+            </form>
+        </div>
+
     <p>@ViewBag.responseCall</p>
 </div>
+
+<style>
+    .ball_img {
+        width: 250px;
+        height: auto
+    }
+</style>
