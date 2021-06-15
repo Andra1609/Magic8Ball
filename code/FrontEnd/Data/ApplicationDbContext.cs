@@ -11,6 +11,6 @@ namespace FrontEnd.Data
     {
         // Constructor chaining
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<Response> Response { get; set; }
+        public DbSet<Outcome> Outcomes { get; set; }
     }
 }

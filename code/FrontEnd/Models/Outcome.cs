@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace FrontEnd.Models
 {
-    public class Response
+    public class Outcome
     {
         public int ID { get; set; }
-        public string Outcome { get; set; }
+        public string Outcomes { get; set; }
     }
 }
