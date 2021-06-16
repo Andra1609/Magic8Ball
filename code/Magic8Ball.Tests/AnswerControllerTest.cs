@@ -1,4 +1,5 @@
 ﻿using Answer.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Magic8Ball.Tests
 
             // assert
             Assert.NotNull(controllerActionResult);
+            Assert.IsType<ActionResult<string>>(controllerActionResult);
         }
     }
 }

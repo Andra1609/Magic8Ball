@@ -38,6 +38,7 @@ namespace Magic8Ball.Tests
 
             // assert
             Assert.NotNull(controllerActionResult);
+            Assert.IsType<IActionResult<string>>(controllerActionResult);
         }
 
         [Fact]
@@ -49,6 +50,8 @@ namespace Magic8Ball.Tests
             var controllerActionResult = homeController.Index();
             // assert
             Assert.NotNull(controllerActionResult);
+            Assert.IsType<IActionResult<string>>(controllerActionResult);
+
         }
 
         private IEnumerable<Outcome> GetOutcomes()

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Person.Controllers;
 using System;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Magic8Ball.Tests
 
             // assert
             Assert.NotNull(controllerActionResult);
+            Assert.IsType<ActionResult<string>>(controllerActionResult);
         }
     }
 }

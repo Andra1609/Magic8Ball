@@ -1,4 +1,5 @@
 ﻿using Merge.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using System;
@@ -22,7 +23,7 @@ namespace Magic8Ball.Tests
         }
 
         [Fact]
-        public void GertMerge_Test()
+        public void GetMerge_Test()
         {
             // arrange - an instance of MergeController is created above, and is passed the configuration object
 
@@ -31,6 +32,7 @@ namespace Magic8Ball.Tests
 
             // assert
             Assert.NotNull(controllerActionResult);
+            Assert.IsType<Task<IActionResult>>(controllerActionResult);
         }
 
     }
