@@ -13,14 +13,15 @@ namespace Person.Controllers
     {
         private static readonly string[] Person = new[]
         {
-            "Barack Obama", "Donald Trump", "Boris Johnson"
+            "Barack Obama", "Donald Trump", "Hillary Clinton", "Boris Johnson", "Vladimir Putin",
+            "Justin Trudeau", "Klaus Iohannis", "Nicolas Sarkozy", "Angela Merkel", "Joe Biden"
         };
          
         [HttpGet]
         public ActionResult<String> Get()
         {
             var rand = new Random();
-            var index = rand.Next(0,3);
+            var index = rand.Next(0,10);
             return Person[index].ToString();
         }
     }

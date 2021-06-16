@@ -1,5 +1,6 @@
 ﻿using FrontEnd.Controllers;
 using FrontEnd.Interfaces;
+using FrontEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -29,7 +30,7 @@ namespace Magic8Ball.Tests
 ;       }
 
         [Fact]
-        public void GertMerge_Test()
+        public void GetMerge_Test()
         {
             // arrange - an instance of HomeController is created above, and is passed the logger and configuration objects
             // act
@@ -37,6 +38,27 @@ namespace Magic8Ball.Tests
 
             // assert
             Assert.NotNull(controllerActionResult);
+        }
+
+        [Fact]
+        public void Outcome_Test()
+        {
+            // arrange
+            mockRepo.Setup(repo => repo.Outcomes.FindAll()).Returns(GetOutcomes().ToList());
+            // act
+            var controllerActionResult = homeController.Index();
+            // assert
+            Assert.NotNull(controllerActionResult);
+        }
+
+        private IEnumerable<Outcome> GetOutcomes()
+        {
+            var outcomes = new List<Outcome> 
+            {
+            new Outcome(){ID=1, Response="It is Certain.", TimeAsked=DateTime.Parse("2021-06-16 14:27:38.779629")},
+            new Outcome(){ID=2, Response="Don't count on it.", TimeAsked=DateTime.Parse("2021-06-16 14:27:34.766727")},
+            };
+            return outcomes;
         }
     }
 }

@@ -9,5 +9,6 @@ namespace FrontEnd.Interfaces
     {
         public int ID { get; set; }
         public string Response { get; set; }
+        public DateTime TimeAsked { get; set; }
     }
 }

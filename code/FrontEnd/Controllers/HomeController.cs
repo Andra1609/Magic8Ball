@@ -36,7 +36,8 @@ namespace FrontEnd.Controllers
             // add outcome from services to database
             var outcome = new Outcome
             {
-                Outcomes = mergeResponseCall
+                TimeAsked = DateTime.Now,
+                Response = mergeResponseCall
             };
             repository.Outcomes.Create(outcome);
             repository.Save();

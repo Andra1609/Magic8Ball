@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FrontEnd.Migrations
@@ -13,7 +14,8 @@ namespace FrontEnd.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Outcomes = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    Response = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    TimeAsked = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {

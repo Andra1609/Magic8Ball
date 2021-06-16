@@ -10,5 +10,8 @@ namespace FrontEnd.Interfaces
     public interface IRepository<T>
     {
         T Create(T entity);
+
+        IEnumerable<T> FindAll();
+        IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression);
     }
 }

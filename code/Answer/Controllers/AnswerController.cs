@@ -13,23 +13,17 @@ namespace Answer.Controllers
     {
         private static readonly string[] Answers = new[]
         {
-            "Yes", "Yes, absolutely", "It is certain", "It is decidely so", "Without a doubt",
-            "No", "No way", "Very doubtful", "Don't count on it", "My sources say no"
+            "It is certain.", "It is decidedly so.", "Without a doubt.", "Yes definitely.", "You may rely on it.",
+            "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.",
+            "Don't count on it.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Very doubtful."
         };
-
-        //// v2
-        //private static readonly string[] Summaries = new[]
-        //{
-        //    "Ask again later", "Cannot predict right now", "Better not to tell you"
-        //};
        
         [HttpGet]
         public ActionResult<string> Get()
         {
             var rand = new Random();
-            var index = rand.Next(0, 10);
-            //// v2
-            //var index = rand.Next(0, 4);
+            var index = rand.Next(0, 15);
+
             return Answers[index].ToString();
         }
     }
