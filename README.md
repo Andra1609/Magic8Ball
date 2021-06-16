@@ -25,6 +25,9 @@ To achieve this, I have decided to produce a Magic 8-Ball game app. In this game
 The user must be able to input "yes/no" question, and then submit it or click on the ball to reveal an answer.
 Additionally, I would like to allow the user to refer to a database to view all answers given by the ball/
 
+## Architecture
+![Services](https://github.com/Andra1609/Magic8Ball/images/services-diagram.png?raw=true)
+
 ## Risk Assessment
 
 ## Testing
