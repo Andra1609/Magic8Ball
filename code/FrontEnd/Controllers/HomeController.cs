@@ -16,13 +16,13 @@ namespace FrontEnd.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IConfiguration Configuration;
-        private IRepositoryWrapper repo;
+        private IRepositoryWrapper repository;
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IRepositoryWrapper repositorywrapper)
         {
             _logger = logger;
             Configuration = configuration;
-            repo = repositorywrapper;
+            repository = repositorywrapper;
         }
 
         // call merge service
@@ -38,10 +38,16 @@ namespace FrontEnd.Controllers
             {
                 Outcomes = mergeResponseCall
             };
-            repo.Outcomes.Create(outcome);
-            repo.Save();
+            repository.Outcomes.Create(outcome);
+            repository.Save();
 
             return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

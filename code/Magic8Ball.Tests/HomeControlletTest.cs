@@ -1,4 +1,5 @@
 ﻿using FrontEnd.Controllers;
+using FrontEnd.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -12,17 +13,19 @@ using Xunit;
 
 namespace Magic8Ball.Tests
 {
-    public class FrontEndTest
+    public class HomeControlletTest
     {
         private Mock<IConfiguration> configurationMock;
         private Mock<ILogger<HomeController>> loggerMock;
+        private Mock<IRepositoryWrapper> mockRepo;
         private HomeController homeController;
 
-        public FrontEndTest()
+        public HomeControlletTest()
         {
-            configurationMock = new Mock<IConfiguration>();
             loggerMock = new Mock<ILogger<HomeController>>();
-            homeController = new HomeController(loggerMock.Object, configurationMock.Object);
+            configurationMock = new Mock<IConfiguration>();
+            mockRepo = new Mock<IRepositoryWrapper>();
+            homeController = new HomeController(loggerMock.Object, configurationMock.Object, mockRepo.Object);
 ;       }
 
         [Fact]
