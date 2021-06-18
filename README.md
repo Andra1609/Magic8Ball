@@ -26,7 +26,8 @@ The user must be able to input "yes/no" question, and then submit it or click on
 Additionally, I would like to allow the user to refer to a database to view all answers given by the ball/
 
 ## Architecture
-![Services](https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png?raw=true){ width=50% }
+![Services](https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png?raw=true)
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="100">
 
 ## Risk Assessment
 
