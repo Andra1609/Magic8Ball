@@ -27,7 +27,7 @@ Additionally, I would like to allow the user to refer to a database to view all 
 
 ## Architecture
 ![Services](https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png?raw=true)
-<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="100">
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="50%">
 
 ## Risk Assessment
 
