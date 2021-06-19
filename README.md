@@ -37,9 +37,14 @@ Additionally, I would like to allow the user to refer to a database to view all 
 
 ## Architecture
 ### Architecture-Plan
-<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="70%">
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="65%">
 
 ### Database Structure
+The Entity Relationship Diagram (ERD) below illustrates the table within the database that stores the outcomes.
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/erd-outcomes.png" width="30%">
+* ID: Unique identifier for the answers
+* Response: String value for the outcome after asking the Magic 8 Ball a question
+* TimeAsked: DateTime value for the time when a question was asked and answered
 
 ### CI Pipeline
 
