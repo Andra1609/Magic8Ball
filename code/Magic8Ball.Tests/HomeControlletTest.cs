@@ -33,12 +33,13 @@ namespace Magic8Ball.Tests
         public void GetMerge_Test()
         {
             // arrange - an instance of HomeController is created above, and is passed the logger and configuration objects
+            
             // act
             var controllerActionResult = homeController.Index();
 
             // assert
             Assert.NotNull(controllerActionResult);
-            Assert.IsType<IActionResult<string>>(controllerActionResult);
+            Assert.IsType<Task<IActionResult>>(controllerActionResult);
         }
 
         [Fact]
@@ -46,11 +47,13 @@ namespace Magic8Ball.Tests
         {
             // arrange
             mockRepo.Setup(repo => repo.Outcomes.FindAll()).Returns(GetOutcomes().ToList());
+
             // act
             var controllerActionResult = homeController.Index();
+
             // assert
             Assert.NotNull(controllerActionResult);
-            Assert.IsType<IActionResult<string>>(controllerActionResult);
+            Assert.IsType<Task<IActionResult>>(controllerActionResult);
 
         }
 
@@ -63,5 +66,22 @@ namespace Magic8Ball.Tests
             };
             return outcomes;
         }
+
+        [Fact]
+        public void SaveToDB_Test()
+        {
+            // arrange
+            string mergeResponseCall = "It is Certain.";
+            mockRepo.Setup(repo => repo.Outcomes.Create(It.IsAny<Outcome>())).Returns(It.IsAny<Outcome>());
+
+            // act
+            homeController.SaveToDB(mergeResponseCall);
+
+            // assert 
+            mockRepo.Verify(repo => repo.Outcomes.Create(It.IsAny<Outcome>()), Times.Once());
+            mockRepo.Verify(repo => repo.Save(), Times.Once());
+        }
+
+
     }
 }

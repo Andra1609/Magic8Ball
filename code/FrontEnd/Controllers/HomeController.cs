@@ -31,8 +31,16 @@ namespace FrontEnd.Controllers
             //var mergeService = "https://localhost:44356/merge";
             var mergeService = $"{Configuration["mergeServiceURL"]}/merge";
             var mergeResponseCall = await new HttpClient().GetStringAsync(mergeService);
+            
             ViewBag.responseCall = mergeResponseCall;
 
+            SaveToDB(mergeResponseCall);
+
+            return View();
+        }
+
+        public void SaveToDB(string mergeResponseCall)
+        {
             // add outcome from services to database
             var outcome = new Outcome
             {
@@ -41,8 +49,6 @@ namespace FrontEnd.Controllers
             };
             repository.Outcomes.Create(outcome);
             repository.Save();
-
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
