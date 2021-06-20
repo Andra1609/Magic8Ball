@@ -40,16 +40,16 @@ Additionally, I would like to allow the user to refer to a database to view all 
 The application has a service-orientated architecture and is composed of 4 services that communicate to generate an output. All four services are ASP.NET Core 5.0 applications: Service 1 implements the MVC design pattern, whereas Service 2, 3 and 4 are RESTful services/web APIs.
 
 #### Service 1
-The core service – this renders the HTML needed to interact with the application, it is responsible for communicating with the other 3 services, and finally for persisting some data in a SQL database.
+The core service – this renders the HTML needed to interact with the application, it is responsible for communicating with the other services, and finally for persisting some data in a SQL database.
 
 #### Service 2
-This service generates a random person that will answer the question. It receives a GET request from service 4
+This service generates a random person that will answer the question.
 
 ### Service 3
-This service generates a random answer for the question. It receives a GET request from service 4
+This service generates a random answer for the question asked by the user.
 
 ##### Service 4
-This service creates an "Object" based upon the results of Service 2 and Service 3. The object is represented by a string obtained by concatenating the strings 
+This service creates an "Object" based upon the results of Service 2 and Service 3. The object is represented by an outcome after asking the Magic 8 Ball a question.
 
 <img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="65%">
 
