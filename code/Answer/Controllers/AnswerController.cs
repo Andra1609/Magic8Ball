@@ -23,7 +23,7 @@ namespace Answer.Controllers
         public ActionResult<string> Get()
         {
             var rand = new Random();
-            var index = rand.Next(0, 15);
+            var index = rand.Next(0, 5);
 
             return Answers[index].ToString();
         }
