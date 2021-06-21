@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using Merge.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,8 @@ namespace Merge
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Merge", Version = "v1" });
             });
+
+            services.AddHttpClient<MergeController>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

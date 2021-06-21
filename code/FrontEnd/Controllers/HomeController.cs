@@ -31,7 +31,7 @@ namespace FrontEnd.Controllers
             //var mergeService = "https://localhost:44356/merge";
             var mergeService = $"{Configuration["mergeServiceURL"]}/merge";
             var mergeResponseCall = await new HttpClient().GetStringAsync(mergeService);
-            
+
             ViewBag.responseCall = mergeResponseCall;
 
             SaveToDB(mergeResponseCall);

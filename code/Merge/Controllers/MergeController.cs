@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -13,14 +13,13 @@ namespace Merge.Controllers
     [Route("[controller]")]
     public class MergeController : ControllerBase
     {
-        // personURL: https://localhost:44345/
-        // answerURL: https://localhost:44398/ 
-
         private IConfiguration Configuration;
+        private HttpClient _client;
 
-        public MergeController(IConfiguration configuration)
+        public MergeController(IConfiguration configuration, HttpClient client)
         {
             Configuration = configuration;
+            _client = client ?? new HttpClient();
         }
 
         [HttpGet]
@@ -30,13 +29,15 @@ namespace Merge.Controllers
             //var personService = "https://localhost:44345/person";
             // inject the configuration inside the controller
             var personService = $"{Configuration["personServiceURL"]}/person";
-            var personResponseCall = await new HttpClient().GetStringAsync(personService);
+            //var personResponseCall = await new HttpClient().GetStringAsync(personService);
+            var personResponseCall = await _client.GetStringAsync(personService);
 
             // call the Answer service
             //var answerService = "https://localhost:44398/answer";
             // inject the configuration inside the controller
             var answerService = $"{Configuration["answerServiceURL"]}/answer";
-            var answerResponseCall = await new HttpClient().GetStringAsync(answerService);
+            //var answerResponseCall = await new HttpClient().GetStringAsync(answerService);
+            var answerResponseCall = await _client.GetStringAsync(answerService);
 
             var mergeResponse = $"{personResponseCall} says: {answerResponseCall}";
             return Ok(mergeResponse);

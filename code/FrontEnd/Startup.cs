@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using FrontEnd.Controllers;
 using FrontEnd.Data;
 using FrontEnd.Interfaces;
 using FrontEnd.Repositories;
@@ -35,6 +36,8 @@ namespace FrontEnd
             options.UseMySql(myConnectionString, ServerVersion.AutoDetect(myConnectionString)));
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddControllersWithViews();
+
+            services.AddHttpClient<HomeController>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
