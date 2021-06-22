@@ -3,6 +3,9 @@ on:
   push:
     branches:
     - main
+  pull_request:
+    branches:
+    - main
 env:
   AZURE_WEBAPP_NAME: andravasilcoiu-webapp-3
   AZURE_WEBAPP_PACKAGE_PATH: ./code/FrontEnd/publish
