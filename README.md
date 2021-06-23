@@ -23,7 +23,7 @@
 The objective of this project is to create an application that generates “Objects” upon a set of predefined rules.
 
 ### Additional Requirements
-In addition to what has been set out in the brief, I am also required to use the following techologies:
+In addition to what has been set out in the brief, I am also required to use the following techologies for solving the problem:
 * Kanban Board: Asana or an equivalent Kanban Board
 * Version Control: Git
 * CI Server: Azure Pipelines
@@ -53,6 +53,13 @@ This service generates a random answer for the question asked by the user.
 This service creates an "Object" based upon the results of Service 2 and Service 3. The object is represented by an outcome after asking the Magic 8 Ball a question.
 
 <img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="65%">
+
+### Migration the to Azure
+Jusitification for migration the .NET app to Microsoft Azure:
+* A
+* B
+* C
+* D
 
 ### Database Structure
 The Entity Relationship Diagram (ERD) below illustrates the table within the database that stores the outcomes.
