@@ -1,0 +1,140 @@
+name: Build and deploy services
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+env:
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 5.0.x
+  PERSON_DIRECTORY: ./code/Person
+  ANSWER_DIRECTORY: ./code/Answer
+  MERGE_DIRECTORY: ./code/Merge
+  FE_DIRECTORY: ./code/FrontEnd
+
+jobs:
+  build-person-service:
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+      - name: Restore
+        run: dotnet restore "${{ env.PERSON_DIRECTORY }}"
+      - name: Build
+        run: dotnet build "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test Person
+        run: dotnet test "${{ env.Person_DIRECTORY }}" --no-build
+      - name: Publish Person service to Azure
+        run: az
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.25.0
+          inlineScript: |
+            cd "${{ env.PERSON_DIRECTORY }}"
+            az webapp up -n andravasilcoiu-webapp-0 --os-type Linux --resource-group andravasilcoiu-project
+
+    build-answer-service:
+      runs-on: ubuntu-latest
+      # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
+        - name: Setup .NET Core
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+        - name: Restore
+          run: dotnet restore "${{ env.ANSWER_DIRECTORY }}"
+        - name: Build
+          run: dotnet build "${{ env.ANSWER_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+        - name: Test Answer
+          run: dotnet test "${{ env.ANSWER_DIRECTORY }}" --no-build
+        - name: Publish Answer service to Azure
+          run: az
+        - name: Azure Login
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+        - name: Azure CLI script
+          uses: azure/CLI@v1
+          with:
+            azcliversion: 2.25.0
+            inlineScript: |
+              cd "${{ env.LETTERS_DIRECTORY }}"
+              az webapp up -n andravasilcoiu-webapp-1 --os-type Linux --resource-group andravasilcoiu-project
+
+  build-merge-service:
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+      - name: Restore
+        run: dotnet restore "${{ env.MERGE_DIRECTORY }}"
+      - name: Build
+        run: dotnet build "${{ env.MERGE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test Merge
+        run: dotnet test "${{ env.MERGE_DIRECTORY }}" --no-build
+      - name: Publish Merge service to Azure
+        run: az
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.25.0
+          inlineScript: |
+            cd "${{ env.MERGE_DIRECTORY }}"
+            az webapp up -n andravasilcoiu-webapp-2 --os-type Linux --resource-group andravasilcoiu-project
+
+  build-frontend-service:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+      - name: Restore
+        run: dotnet restore "${{ env.FE_DIRECTORY }}"
+      - name: Build
+        run: dotnet build "${{ env.FE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test FrontEnd
+        run: dotnet test "${{ env.FE_DIRECTORY }}" --no-build
+      - name: Publish FrontEnd service to Azure
+        run: az
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.25.0
+          inlineScript: |
+            cd "${{ env.FE_DIRECTORY }}"
+            az webapp up -n andravasilcoiu-webapp-2 --os-type Linux --resource-group andravasilcoiu-project
+  
