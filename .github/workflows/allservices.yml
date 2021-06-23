@@ -47,7 +47,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.PERSON_DIRECTORY }}"
+            cd "${{ env.PERSON_DIRECTORY_PATH }}"
             az webapp up -n andravasilcoiu-webapp-0 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   build-answer-service:
     runs-on: ubuntu-latest
@@ -75,7 +75,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.ANSWER_DIRECTORY }}"
+            cd "${{ env.ANSWER_DIRECTORY_PATH }}"
             az webapp up -n andravasilcoiu-webapp-1 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   build-merge-service:
     runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.MERGE_DIRECTORY }}"
+            cd "${{ env.MERGE_DIRECTORY_PATH }}"
             az webapp up -n andravasilcoiu-webapp-2 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   build-frontend-service:
     runs-on: ubuntu-latest
@@ -129,6 +129,6 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.FE_DIRECTORY }}"
+            cd "${{ env.FE_DIRECTORY_PATH }}"
             az webapp up -n andravasilcoiu-webapp-3 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   
