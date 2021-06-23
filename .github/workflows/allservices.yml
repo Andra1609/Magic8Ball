@@ -14,7 +14,12 @@ env:
   PERSON_DIRECTORY: ./code/Person
   ANSWER_DIRECTORY: ./code/Answer
   MERGE_DIRECTORY: ./code/Merge
-  FE_DIRECTORY: ./code/FrontEnd
+  FE_DIRECTORY: ./code/
+  
+  PERSON_PACKAGE_PATH: ./code/serviceone/publish
+  ANSWER_PACKAGE_PATH: ./code/servicetwo/publish
+  MERGE_PACKAGE_PATH: ./code/servicethree/publish
+  FE_PACKAGE_PATH: ./code/frontend/publish
 
 jobs:
   build-person-service:
