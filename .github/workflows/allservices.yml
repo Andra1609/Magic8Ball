@@ -37,6 +37,8 @@ jobs:
         run: dotnet restore "${{ env.PERSON_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test
+        run: dotnet test "${{ env.PERSON_DIRECTORY }}" --no-build
       - name: Publish
         run: dotnet publish "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.PERSON_PACKAGE_PATH }}"
       - name: Publish Person service to Azure
@@ -66,6 +68,8 @@ jobs:
         run: dotnet restore "${{ env.ANSWER_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.ANSWER_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test
+        run: dotnet test "${{ env.ANSWER_DIRECTORY }}" --no-build
       - name: Publish
         run: dotnet publish "${{ env.ANSWER_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.ANSWER_PACKAGE_PATH }}"
       - name: Publish Answer service to Azure
@@ -96,6 +100,8 @@ jobs:
         run: dotnet restore "${{ env.MERGE_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.MERGE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test
+        run: dotnet test "${{ env.MERGE_DIRECTORY }}" --no-build
       - name: Publish
         run: dotnet publish "${{ env.MERGE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.MERGE_PACKAGE_PATH }}"
       - name: Publish Merge service to Azure
@@ -124,6 +130,8 @@ jobs:
         run: dotnet restore "${{ env.FE_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.FE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Test
+        run: dotnet test "${{ env.FE_DIRECTORY }}" --no-build
       - name: Publish
         run: dotnet publish "${{ env.FE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.FE_PACKAGE_PATH }}"
       - name: Publish FrontEnd service to Azure
