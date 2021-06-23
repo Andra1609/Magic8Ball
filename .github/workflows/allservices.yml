@@ -36,6 +36,8 @@ jobs:
         run: dotnet restore "${{ env.PERSON_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Publish
+        run: dotnet publish "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.PERSON_PACKAGE_PATH }}"
       - name: Publish Person service to Azure
         run: az
       - name: Azure Login
@@ -47,7 +49,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.PERSON_DIRECTORY_PATH }}"
+            cd "${{ env.PERSON_PACKAGE_PATH }}"
             az webapp up -n andravasilcoiu-webapp-0 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   build-answer-service:
     runs-on: ubuntu-latest
@@ -63,6 +65,8 @@ jobs:
         run: dotnet restore "${{ env.ANSWER_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.ANSWER_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Publish
+        run: dotnet publish "${{ env.ANSWER_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.ANSWER_PACKAGE_PATH }}"
       - name: Publish Answer service to Azure
         run: az
       - name: Azure Login
@@ -75,7 +79,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.ANSWER_DIRECTORY_PATH }}"
+            cd "${{ env.ANSWER_PACKAGE_PATH }}"
             az webapp up -n andravasilcoiu-webapp-1 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   build-merge-service:
     runs-on: ubuntu-latest
@@ -103,7 +107,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.MERGE_DIRECTORY_PATH }}"
+            cd "${{ env.MERGE_PACKAGE_PATH }}"
             az webapp up -n andravasilcoiu-webapp-2 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   build-frontend-service:
     runs-on: ubuntu-latest
@@ -129,6 +133,6 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.FE_DIRECTORY_PATH }}"
+            cd "${{ env.FE_PACKAGE_PATH }}"
             az webapp up -n andravasilcoiu-webapp-3 --os-type Linux --resource-group andravasilcoiu-project --runtime "DOTNET|5.0"
   
