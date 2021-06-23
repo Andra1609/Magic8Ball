@@ -86,7 +86,7 @@ A YAML file was written for configuring the workflow:
 * The workflow is triggered by two events: a push or a pull request on the main branch
 * Environment variables are used to specify the .NET Core version and the needed paths for each microservice
 * There are 4 jobs that build each service and run in parallel
-* Each job has one step with steps (tasks):
+* Each job has multiple steps (tasks):
   * Setting up .NET Core: Set up the build environment 
   * Restore: Restore packages specified in the .NET Core project .csproj files
   * Build: Build the environment for the .NET Core app
@@ -96,6 +96,10 @@ A YAML file was written for configuring the workflow:
   * Create and deploy or redeploy the App Service using an Azure CLI command
 
 A service principal was created using the **az ad sp create-for-rbac** command in the Azure CLI. The output of the command is a JSON object with the role assignment credentials that provide access to the App Service apps. This was used to configure a secret in the GitHub repository, and was then used in the YAML file to login to Azure.
+
+As can be seen below, all jobs were successful and the apps were published to Azure.
+
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/jobs-built.png">
 
 ## Project Tracking
 
