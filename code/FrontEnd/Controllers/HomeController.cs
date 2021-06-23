@@ -41,7 +41,7 @@ namespace FrontEnd.Controllers
 
         public void SaveToDB(string mergeResponseCall)
         {
-            // add outcome from services to database
+            // add outcome from services to db
             var outcome = new Outcome
             {
                 TimeAsked = DateTime.Now,
