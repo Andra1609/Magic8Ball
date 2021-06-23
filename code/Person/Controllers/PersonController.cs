@@ -13,10 +13,10 @@ namespace Person.Controllers
     {
         private static readonly string[] Person = new[]
         {
-            "Barack Obama", "Donald Trump", "Hillary Clinton", "Boris Johnson", "Vladimir Putin",
-            "Justin Trudeau", "Klaus Iohannis", "Nicolas Sarkozy", "Angela Merkel", "Joe Biden"
-            //"Tom Cruise", "Nicole Kidman", "Tom Hanks", "Morgan Freeman", "Johnny Depp",
-            //"Denzel Washington", "Meryl Streep", "Charlize Theron", "Helena Bonham Carter", "Jennifer Connelly"
+            //"Barack Obama", "Donald Trump", "Hillary Clinton", "Boris Johnson", "Vladimir Putin",
+            //"Justin Trudeau", "Klaus Iohannis", "Nicolas Sarkozy", "Angela Merkel", "Joe Biden"
+            "Tom Cruise", "Nicole Kidman", "Tom Hanks", "Morgan Freeman", "Johnny Depp",
+            "Denzel Washington", "Meryl Streep", "Charlize Theron", "Helena Bonham Carter", "Jennifer Connelly"
         };
          
         [HttpGet]
