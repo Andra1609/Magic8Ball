@@ -133,5 +133,5 @@ jobs:
           azcliversion: 2.25.0
           inlineScript: |
             cd "${{ env.FE_DIRECTORY }}"
-            az webapp up -n andravasilcoiu-webapp-2 --os-type Linux --resource-group andravasilcoiu-project
+            az webapp up -n andravasilcoiu-webapp-3 --os-type Linux --resource-group andravasilcoiu-project
   
