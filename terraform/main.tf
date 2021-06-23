@@ -136,6 +136,22 @@ resource "azurerm_mysql_server" "server" {
   }
 }
 
+resource "azurerm_mysql_firewall_rule" "client" {
+  name                = "client_ip_dd"
+  resource_group_name = azurerm_resource_group.rg.name
+  server_name         = azurerm_mysql_server.server.name
+  start_ip_address    = "89.36.67.23"
+  end_ip_address      = "89.36.67.23"
+}
+
+resource "azurerm_mysql_firewall_rule" "azure" {
+  name                = "azure_services_allowed"
+  resource_group_name = azurerm_resource_group.rg.name
+  server_name         = azurerm_mysql_server.server.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
+}
+
 resource "azurerm_mysql_database" "db" {
   name                = "magicdb"
   server_name         = azurerm_mysql_server.server.name
