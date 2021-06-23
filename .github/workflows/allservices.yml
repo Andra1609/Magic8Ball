@@ -74,7 +74,7 @@ jobs:
         with:
           azcliversion: 2.25.0
           inlineScript: |
-            cd "${{ env.LETTERS_DIRECTORY }}"
+            cd "${{ env.ANSWER_DIRECTORY }}"
             az webapp up -n andravasilcoiu-webapp-1 --os-type Linux --resource-group andravasilcoiu-project
   build-merge-service:
     runs-on: ubuntu-latest
