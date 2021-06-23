@@ -5,12 +5,13 @@
    * [Additional Requirements](#additional-requirements)
    * [My Approach](#my-approach)
 * [Architecture](#architecture)
-   * [Architecture-Plan](#architecture-plan)
+   * [Architecture Plan](#architecture-plan)
    * [Database Structure](#database-structure)
    * [CI Pipeline](#ci-pipeline)
 * [Project Tracking](#project-tracking)
 * [Risk Assessment](#risk-assessment)
 * [Front-End Design](#front-end-design)
+* [Terraform](#terraform)
 * [Testing](#testing)
 * [Known Issues](#known-issues)
 * [Future Improvements](#future-improvements)
@@ -36,7 +37,7 @@ The user must be able to input "yes/no" question, and then submit it or click on
 Additionally, I would like to allow the user to refer to a database to view all answers given by the ball.
 
 ## Architecture
-### Architecture-Plan
+### Architecture Plan
 The application has a service-orientated architecture and is composed of 4 services that communicate to generate an output. All four services are ASP.NET Core 5.0 applications: Service 1 implements the MVC design pattern, whereas Service 2, 3 and 4 are RESTful services/web APIs.
 
 #### Service 1
@@ -64,6 +65,10 @@ The Entity Relationship Diagram (ERD) below illustrates the table within the dat
 
 ### CI Pipeline
 
+The application is fully integrated using the Feature-Branch model into GitHub, which will subsequently be built through GitHub Actions and deployed to Microsoft Azure. If a change is made to the code, the applications are recreated and redeployed.
+
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/ci-pipeline.png" width="85%">
+
 ## Project Tracking
 
 ## Risk Assessment
@@ -72,6 +77,9 @@ The Entity Relationship Diagram (ERD) below illustrates the table within the dat
 Basic HTML and CSS were used for creating the frontend, as the use case is not complex. The user can ask a question using the input field, and either press "Enter" on the keyboard or click on the Magic 8 Ball to generate an answer.
 
 <img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/frontend-home-view.png">
+
+## Terraform
+
 
 
 ## Testing
