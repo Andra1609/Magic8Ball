@@ -105,7 +105,7 @@ resource "azurerm_app_service" "frontend-webapp" {
   connection_string {
     name  = "DefaultConnection"
     type  = "Custom"
-    value = "Server=andraserver.mysql.database.azure.com; Port=3306; Database=magicdb; Uid=${var.user}u@andraserver; Pwd=Pa55w.rd1234; SslMode=Preferred;"
+    value = "Server=andraserver.mysql.database.azure.com; Port=3306; Database=magicdb; Uid=${var.user}@andraserver; Pwd=Pa55w.rd1234; SslMode=Preferred;"
   }
 
   tags = {
