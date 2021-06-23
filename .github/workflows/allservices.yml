@@ -11,6 +11,7 @@ on:
 env:
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
+  
   PERSON_DIRECTORY: ./code/Person
   ANSWER_DIRECTORY: ./code/Answer
   MERGE_DIRECTORY: ./code/Merge
@@ -19,7 +20,7 @@ env:
   PERSON_PACKAGE_PATH: ./code/Person/publish
   ANSWER_PACKAGE_PATH: ./code/Answer/publish
   MERGE_PACKAGE_PATH: ./code/Merge/publish
-  FE_PACKAGE_PATH: ./code/FrontENnd/publish
+  FE_PACKAGE_PATH: ./code/FrontEnd/publish
 
 jobs:
   build-person-service:
@@ -95,6 +96,8 @@ jobs:
         run: dotnet restore "${{ env.MERGE_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.MERGE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
+      - name: Publish
+        run: dotnet publish "${{ env.MERGE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --output "${{ env.MERGE_PACKAGE_PATH }}"
       - name: Publish Merge service to Azure
         run: az
       - name: Azure Login
