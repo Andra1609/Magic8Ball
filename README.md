@@ -80,6 +80,8 @@ The application is fully integrated using the Feature-Branch model into GitHub, 
 
 ## Risk Assessment
 
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/risk-assessment.png">
+
 ## Front-End Design
 Basic HTML and CSS were used for creating the frontend, as the use case is not complex. The user can ask a question using the input field, and either press "Enter" on the keyboard or click on the Magic 8 Ball to generate an answer.
 
