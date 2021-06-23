@@ -31,8 +31,6 @@ jobs:
         run: dotnet restore "${{ env.PERSON_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
-      - name: Test Person
-        run: dotnet test "${{ env.PERSON_DIRECTORY }}" --no-build
       - name: Publish Person service to Azure
         run: az
       - name: Azure Login
@@ -60,8 +58,6 @@ jobs:
         run: dotnet restore "${{ env.ANSWER_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.ANSWER_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
-      - name: Test Answer
-        run: dotnet test "${{ env.ANSWER_DIRECTORY }}" --no-build
       - name: Publish Answer service to Azure
         run: az
       - name: Azure Login
@@ -90,8 +86,6 @@ jobs:
         run: dotnet restore "${{ env.MERGE_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.MERGE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
-      - name: Test Merge
-        run: dotnet test "${{ env.MERGE_DIRECTORY }}" --no-build
       - name: Publish Merge service to Azure
         run: az
       - name: Azure Login
@@ -118,8 +112,6 @@ jobs:
         run: dotnet restore "${{ env.FE_DIRECTORY }}"
       - name: Build
         run: dotnet build "${{ env.FE_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
-      - name: Test FrontEnd
-        run: dotnet test "${{ env.FE_DIRECTORY }}" --no-build
       - name: Publish FrontEnd service to Azure
         run: az
       - name: Azure Login
