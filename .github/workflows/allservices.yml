@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: dotnet build "${{ env.PERSON_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }}
       - name: Test Person
-        run: dotnet test "${{ env.Person_DIRECTORY }}" --no-build
+        run: dotnet test "${{ env.PERSON_DIRECTORY }}" --no-build
       - name: Publish Person service to Azure
         run: az
       - name: Azure Login
