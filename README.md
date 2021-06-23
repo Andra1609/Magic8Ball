@@ -46,20 +46,26 @@ The core service – this renders the HTML needed to interact with the applicati
 #### Service 2
 This service generates a random person that will answer the question.
 
-### Service 3
+#### Service 3
 This service generates a random answer for the question asked by the user.
 
-##### Service 4
+#### Service 4
 This service creates an "Object" based upon the results of Service 2 and Service 3. The object is represented by an outcome after asking the Magic 8 Ball a question.
 
 <img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/services-diagram.png" width="65%">
 
-### Migration the to Azure
-Jusitification for migration the .NET app to Microsoft Azure:
-* A
-* B
-* C
-* D
+### Migration to Microsoft Azure
+Jusitification for migrating apps to Microsoft Azure:
+* Deliver updates faster: Automate deployments with continuous integration/continuous deployment (CI/CD) capabilities using DevOps, Bit Bucket and GitHub
+* Increase developer productivity: 
+  * Start fast and finish faster with source code integration from GitHub, live debugging and publishing directly from Microsoft Visual Studio IDE
+  * Easily connect to a database of choice and tap into an ecosystem of Open Source Software packages, APIs, connectors and services through the Azure Marketplace
+* Achieve global scale on demand:
+  * Get high availability within and across Azure regions
+  * Automatically scale vertically and horizontally based on application performance, or customisable rules to handle peaks in workload automatically while minimising costs during off-peak times
+* Get actionable insights and analytics: 
+  * Azure Monitor can provide detailed views of resource usage
+  * Application Insights can provide deeper insights into the app’s throughput, response times, memory and CPU utilisation, and error trends
 
 ### Database Structure
 The Entity Relationship Diagram (ERD) below illustrates the table within the database that stores the outcomes.
@@ -75,6 +81,21 @@ The Entity Relationship Diagram (ERD) below illustrates the table within the dat
 The application is fully integrated using the Feature-Branch model into GitHub, which will subsequently be built through GitHub Actions and deployed to Microsoft Azure. If a change is made to the code, the applications are recreated and redeployed.
 
 <img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/ci-pipeline.png" width="85%">
+
+A YAML file was written for configuring the workflow:
+* The workflow is triggered by two events: a push or a pull request on the main branch
+* Environment variables are used to specify the .NET Core version and the needed paths for each microservice
+* There are 4 jobs that build each service and run in parallel
+* Each job has one step with steps (tasks):
+  * Setting up .NET Core: Set up the build environment 
+  * Restore: Restore packages specified in the .NET Core project .csproj files
+  * Build: Build the environment for the .NET Core app
+  * Test: Run unit tests by using the xUnit testing framework
+  * Publish: Publish the output of the .NET build into a .zip file
+  * Login to Azure
+  * Create and deploy or redeploy the App Service using an Azure CLI command
+
+A service principal was created using the **az ad sp create-for-rbac** command in the Azure CLI. The output of the command is a JSON object with the role assignment credentials that provide access to the App Service apps. This was used to configure a secret in the GitHub repository, and was then used in the YAML file to login to Azure.
 
 ## Project Tracking
 
