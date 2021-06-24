@@ -27,7 +27,6 @@ namespace Magic8Ball.Tests
             configurationMock = new Mock<IConfiguration>();
             mockRepo = new Mock<IRepositoryWrapper>();
             homeController = new HomeController(loggerMock.Object, configurationMock.Object, mockRepo.Object);
-            ;
         }
 
         [Fact]
