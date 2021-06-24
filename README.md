@@ -76,6 +76,8 @@ The Entity Relationship Diagram (ERD) below illustrates the table within the dat
 * Response: String value for the outcome after asking the Magic 8 Ball a question
 * TimeAsked: DateTime value for the time when a question was asked and answered
 
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/mysql-db.png" width="65%">
+
 ### CI Pipeline
 
 The application is fully integrated using the Feature-Branch model into GitHub, which will subsequently be built through GitHub Actions and deployed to Microsoft Azure. If a change is made to the code, the applications are recreated and redeployed.
@@ -102,6 +104,14 @@ As can be seen below, all jobs were successful and the apps were published to Az
 <img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/jobs-built.png">
 
 ## Project Tracking
+
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/kanban-board-1.png" width="65%">
+
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/kanban-board-2.png" width="65%">
+
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/kanban-board-3.png" width="65%">
+
+<img src="https://github.com/Andra1609/Magic8Ball/blob/main/images/kanban-board-create-service1.png" width="65%">
 
 ## Risk Assessment
 
